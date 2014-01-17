@@ -47,8 +47,8 @@
 			<h4>Bests</h4>
 			<p ng-repeat="best in athleteData.bests">{{best.event}} - {{best.time}}</p>
 			<h4>Races</h4>
-			<p ng-repeat-start="race in athleteData.races">{{race.meet}}</p>
-			<p ng-repeat-end> {{race.event}}: {{race.mark}}</p>
+			<p ng-repeat-start="race in athleteData.races"><strong>{{race.meet}}</strong></p>
+			<p ng-repeat-end> {{race.event}}: {{race.mark}} {{race.date}}</p>
 		</div>
 
 
