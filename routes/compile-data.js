@@ -27,7 +27,7 @@ exports.compileAthletes = function(req, res){
       //res.json(autocomplete_teams);
 
 		for (var i in autocomplete_teams) {
-			if(i < 50)
+			if(i < 500)
 			{
 			var team = autocomplete_teams[i];
 			console.log("Getting roster for " + team.url);
@@ -86,7 +86,7 @@ exports.compileAthletes = function(req, res){
 							        });
 
 							        client.set(athleteTfrrsURL, JSON.stringify(athlete));
-							       	console.log(athlete);
+							       	
 							    });
 								}
 								// END RUNNER INFO
