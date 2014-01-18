@@ -1,6 +1,7 @@
 var express = require('express'),
     times = require('./routes/runner-info'),
-    path = require('path');
+    path = require('path'),
+    data = require('./routes/compile-data');
 
 var app = express();
 
@@ -21,6 +22,7 @@ app.use(express.favicon(__dirname + '/public/images/favicon.ico'));
 app.get('/athlete/:id', times.athleteStats);
 app.get('/teams', times.teams);
 app.get('/teams/roster/teams/:url', times.roster);
+app.get('/data/compile', data.compileAthletes);
 
 app.listen(process.env.PORT || 5000);
 console.log('Listening on port 5000...');
