@@ -27,7 +27,7 @@ exports.compileAthletes = function(req, res){
       //res.json(autocomplete_teams);
 
 		for (var i in autocomplete_teams) {
-			if(i < 5)
+			if(i < 50)
 			{
 			var team = autocomplete_teams[i];
 			console.log("Getting roster for " + team.url);
