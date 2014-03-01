@@ -4,7 +4,8 @@ angular.module('tfrrsExplorerApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'googlechart'
 ])
   .config(function ($routeProvider) {
     $routeProvider

@@ -14,7 +14,7 @@
 
 			<div style="max-height:500px; overflow: auto; border: 1px solid lightgray;" class="scroll-div">
 			  <ul class="nav nav-pills nav-stacked">
-			  	<li ng-repeat="team in data | filter:{text:teamFilter}" ng-click="getRoster(team.url, $index)" ng-class="{active: selectedRoster == $index}">
+			  	<li ng-repeat="team in teams | filter:{text:teamFilter}" ng-click="getRoster(team.url, $index)" ng-class="{active: selectedRoster == $index}">
 			  		<a href="">{{team.text}}</a>
 			  	</li>  
 				</ul>
@@ -23,8 +23,8 @@
   </div>
 
   <div class="col-sm-4">
-  	<h1>Athletes {{test}} </h1>
-  	<input tabindex="2" type="text" ng-model="athleteFilter" placeholder="Filter by athlete name..." class="form-control" ng-change="selectedAthlete = null"/>
+  	<h1>Athletes</h1>
+  	<input type="search" tabindex="2" ng-model="athleteFilter" placeholder="Filter by athlete name..." class="form-control" ng-change="selectedAthlete = null"/>
   	<hr>
   	<div style="max-height:500px; overflow: auto; border: 1px solid lightgray;" class="scroll-div">
   	<ul class="nav nav-pills nav-stacked">
@@ -40,19 +40,24 @@
   	<h1>Stats</h1>
   	<hr>
 		<div id="athlete-info" ng-show="athleteData">
-	  	<h3>{{athleteData.name}}</h3>
-			<a href="/athlete/{{athleteData.tfrrs_id}}">
-	  		<button type="button" class="btn btn-default">Raw JSON</button>
-			</a>
-			<h4>Bests</h4>
-			<p ng-repeat="best in athleteData.bests">{{best.event}} - {{best.time}}</p>
-			<h4>Races</h4>
-			<p ng-repeat-start="race in athleteData.races"><strong>{{race.meet}}</strong></p>
-			<p ng-repeat-end> {{race.event}}: {{race.mark}} {{race.date}}</p>
+	  		<h3>{{athleteData.name}}</h3>
+	  		<div style="max-height:500px; overflow: auto; border: 1px solid lightgray; padding:3px;" class="scroll-div">
+				<a href="/athlete/{{athleteData.tfrrs_id}}">
+		  		<button type="button" class="btn btn-default">Raw JSON</button>
+				</a>
+				<h4>Bests</h4>
+				<p ng-repeat="best in athleteData.bests">{{best.event}} - {{best.time}}</p>
+				<h4>Races</h4>
+				<p ng-repeat-start="race in athleteData.races"><strong>{{race.meet}}</strong></p>
+				<p ng-repeat-end> {{race.event}}: {{race.mark}} {{race.date}}</p>
+			</div>
 		</div>
-
-
   </div>
 	
 
+</div>
+<hr>
+<div class="row">
+	<h2>Performance Graphs</h2>
+	<div ng-repeat="chart in charts" google-chart chart="charts[$index]" style="{{chart.cssStyle}}"/>
 </div>
